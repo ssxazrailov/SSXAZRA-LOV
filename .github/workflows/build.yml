@@ -10,20 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Get Date
       id: date
       run: echo "date=$(date +'%Y-%m-%d-%H%M%S')" >> $GITHUB_ENV
 
     - name: Build with Buildozer
-      uses: ArtemShat/buildozer-action@v1.2
+      uses: JonasCezar/buildozer-action@v1
       with:
         command: buildozer -v android debug
         buildozer_version: master
 
     - name: Upload APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: SSXAZRAILOV-APK-${{ env.date }}
         path: bin/*.apk
